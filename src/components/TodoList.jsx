@@ -1,16 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import TodoLeftItem from './TodoLeftItem';
-import TodoDoneItem from './TodoDoneItem';
+import TodoItem from './TodoItem';
 
 const TodoListWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 2rem 2rem;
+  margin: 2rem 0;
   height: 350px;
   h3 {
     color: #5db8f0;
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 700;
     letter-spacing: 0.5rem;
     text-align: center;
@@ -35,13 +34,13 @@ const TodoList = () => {
       <LeftList>
         <h3>LEFT</h3>
         <ul>
-          <TodoLeftItem />
+          <TodoItem />
         </ul>
       </LeftList>
       <DoneList>
         <h3>DONE</h3>
         <ul>
-          <TodoDoneItem />
+          <TodoItem done />
         </ul>
       </DoneList>
     </TodoListWrapper>

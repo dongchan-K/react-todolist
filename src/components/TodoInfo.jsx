@@ -7,7 +7,7 @@ const TodoInfoWrapper = styled.div`
   justify-content: center;
   align-items: center;
   p {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #aaa;
   }

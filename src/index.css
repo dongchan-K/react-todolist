@@ -91,7 +91,7 @@ video {
   padding: 0;
   border: 0;
   font: inherit;
-  vertical-align: baseline;
+  vertical-align: middle;
   font-size: 10px;
 }
 
@@ -123,6 +123,11 @@ body,
 ol,
 ul {
   list-style: none;
+}
+
+button {
+  border: none;
+  outline: none;
 }
 
 blockquote,

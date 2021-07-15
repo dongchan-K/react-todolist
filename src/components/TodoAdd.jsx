@@ -16,11 +16,9 @@ const TodoAddWrapper = styled.button`
   background-color: #458cff;
 
   color: #fff;
-  outline: none;
-  border: none;
+
   border-radius: 50%;
   cursor: pointer;
-  /* transition: 0.5s; */
   transition: 0.3s all ease-in;
   &:hover {
     background-color: #5db8f0;
