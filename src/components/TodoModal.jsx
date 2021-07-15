@@ -18,8 +18,8 @@ const InsertModalWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 20%;
-  height: 20%;
+  width: 320px;
+  min-height: 200px;
   background-color: #fff;
   border-radius: 1.5rem;
   form {
@@ -30,6 +30,7 @@ const InsertModalWrapper = styled.div`
     width: 100%;
     padding: 0.7rem 0;
     margin-top: 3rem;
+    font-size: 1.5rem;
     border-bottom: 3px dashed #e0ecff;
     ::placeholder {
       color: #000;
@@ -44,10 +45,10 @@ const ButtonWrapper = styled.div`
 `;
 
 const StyledButton = styled.button`
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: #fff;
   background-color: #458cff;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.2rem;
   cursor: pointer;
   border-radius: 4px;
   transition: 0.3s all ease-in;
