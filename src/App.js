@@ -1,21 +1,19 @@
-function App() {
+import React from 'react';
+import TodoTemplate from './components/TodoTemplate';
+import TodoHeader from './components/TodoHeader';
+import TodoInfo from './components/TodoInfo';
+import TodoList from './components/TodoList';
+import TodoAdd from './components/TodoAdd';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <TodoTemplate>
+      <TodoHeader />
+      <TodoInfo />
+      <TodoList />
+      <TodoAdd />
+    </TodoTemplate>
   );
-}
+};
 
 export default App;
