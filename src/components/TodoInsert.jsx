@@ -1,48 +1,48 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { MdAdd } from 'react-icons/md';
+import TodoModal from './TodoModal';
 
-const TodoInsertForm = styled.form`
+const TodoAddWrapper = styled.button`
+  width: 48px;
+  height: 48px;
   position: absolute;
-  display: flex;
   right: 4%;
   bottom: 4%;
   transform: translate(-4%, -4%);
-  width: 300px;
-  height: 48px;
-  opacity: 0;
-  transition: 0.5s all ease-in;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  background-color: #458cff;
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s all ease-in;
+  &:hover {
+    background-color: #5db8f0;
+  }
+
   ${(props) =>
-    props.clicked &&
+    props.open &&
     css`
-      right: 50%;
-      bottom: 4%;
-      transform: translate(50%, -4%);
-      opacity: 1;
+      background-color: #fc325e;
+      &:hover {
+        background-color: #ff7d99;
+      }
+      transform: translate(-50%, -4%) rotate(45deg);
     `}
-  input {
-    padding: 1rem;
-    flex: 1;
-    border-radius: 1rem 0 0 1rem;
-    border: 1.5px solid #aaa;
-  }
-  button {
-    padding: 1rem;
-    border: 1.5px solid #aaa;
-    border-radius: 0 1rem 1rem 0;
-    background-color: #aaa;
-    font-size: 1.4rem;
-    font-weight: 700;
-    cursor: pointer;
-  }
 `;
 
-const TodoInsert = () => {
+const TodoAdd = () => {
   return (
-    <TodoInsertForm clicked>
-      <input type="text" placeholder="할 일을 입력하세요" />
-      <button type="submit">추가</button>
-    </TodoInsertForm>
+    <>
+      <TodoAddWrapper>
+        <MdAdd />
+      </TodoAddWrapper>
+      <TodoModal />
+    </>
   );
 };
 
-export default TodoInsert;
+export default TodoAdd;
