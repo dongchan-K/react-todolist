@@ -6,17 +6,15 @@ const TodoAddWrapper = styled.button`
   width: 48px;
   height: 48px;
   position: absolute;
-  left: 50%;
+  right: 4%;
   bottom: 4%;
-  transform: translate(-50%, -4%);
+  transform: translate(-4%, -4%);
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 3rem;
   background-color: #458cff;
-
   color: #fff;
-
   border-radius: 50%;
   cursor: pointer;
   transition: 0.3s all ease-in;

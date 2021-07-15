@@ -7,13 +7,14 @@ const TodoListWrapper = styled.div`
   justify-content: space-between;
   margin: 2rem 0;
   height: 350px;
+  overflow-y: auto;
   h3 {
     color: #5db8f0;
     font-size: 2rem;
     font-weight: 700;
     letter-spacing: 0.5rem;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.8rem;
   }
 `;
 
@@ -35,6 +36,12 @@ const TodoList = () => {
         <h3>LEFT</h3>
         <ul>
           <TodoItem />
+          <TodoItem />
+          <TodoItem />
+          <TodoItem />
+          <TodoItem />
+          <TodoItem />
+          {/* <TodoItem /> */}
         </ul>
       </LeftList>
       <DoneList>

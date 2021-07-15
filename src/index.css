@@ -125,9 +125,15 @@ ul {
   list-style: none;
 }
 
+input,
 button {
   border: none;
   outline: none;
+}
+
+input,
+button {
+  padding: 0;
 }
 
 blockquote,

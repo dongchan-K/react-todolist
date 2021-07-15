@@ -7,7 +7,6 @@ const TodoItemWrapper = styled.li`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 0;
-
   .left-item {
     display: flex;
     align-items: center;
