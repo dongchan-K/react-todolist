@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import styled, { css } from 'styled-components';
+import useInputs from '../hooks/useInputs';
+import { addTodo } from '../modules/todos';
+import dayjs from 'dayjs';
 
 const TodoInsertWrapper = styled.div`
   position: fixed;
@@ -32,9 +36,6 @@ const InsertModalWrapper = styled.div`
     margin-top: 3rem;
     font-size: 1.5rem;
     border-bottom: 3px dashed #e0ecff;
-    ::placeholder {
-      color: #000;
-    }
   }
 `;
 
@@ -69,18 +70,41 @@ const StyledButton = styled.button`
     `}
 `;
 
-const TodoModal = ({ visible }) => {
-  // visible 값이 true일 경우만 모달 보여줌
-  if (!visible) return null;
+const TodoModal = ({ closeModal }) => {
+  const dispatch = useDispatch();
+  const { form, changeForm } = useInputs({
+    id: null,
+    content: null,
+    isDone: false,
+    date: dayjs().format('YYYY-MM-DD'),
+  });
+
+  // Todo 항목 추가
+  const insertTodo = () => {
+    // 할 일이 입력되지 않았다면 추가하지 않음
+    if (!form.content) return;
+    dispatch(addTodo(form));
+    closeModal();
+  };
 
   return (
-    <TodoInsertWrapper>
-      <InsertModalWrapper>
-        <form>
-          <input placeholder="할 일을 입력해 주세요" />
+    <TodoInsertWrapper onClick={closeModal}>
+      {/* 이벤트 전파 방지를 통해 모달 바깥 영역과 취소 버튼에서만 모달 닫힘 */}
+      <InsertModalWrapper onClick={(e) => e.stopPropagation()}>
+        {/* form 태그 기본 동작 중단 */}
+        <form onClick={(e) => e.preventDefault()}>
+          <input
+            name="content"
+            placeholder="할 일을 입력해 주세요"
+            onChange={(e) => changeForm(e)}
+          />
           <ButtonWrapper>
-            <StyledButton type="submit">추가</StyledButton>
-            <StyledButton cancel>취소</StyledButton>
+            <StyledButton type="submit" onClick={insertTodo}>
+              추가
+            </StyledButton>
+            <StyledButton cancel onClick={closeModal}>
+              취소
+            </StyledButton>
           </ButtonWrapper>
         </form>
       </InsertModalWrapper>

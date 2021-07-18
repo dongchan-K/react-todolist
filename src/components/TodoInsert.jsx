@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { MdAdd } from 'react-icons/md';
 import TodoModal from './TodoModal';
+import useModal from '../hooks/useOpenModals';
 
 const TodoAddWrapper = styled.button`
   width: 48px;
@@ -34,15 +35,17 @@ const TodoAddWrapper = styled.button`
     `}
 `;
 
-const TodoAdd = () => {
+const TodoInsert = () => {
+  const { modalState, openModal, closeModal } = useModal();
+
   return (
     <>
-      <TodoAddWrapper>
+      <TodoAddWrapper onClick={openModal}>
         <MdAdd />
       </TodoAddWrapper>
-      <TodoModal />
+      {modalState && <TodoModal closeModal={closeModal} />}
     </>
   );
 };
 
-export default TodoAdd;
+export default TodoInsert;

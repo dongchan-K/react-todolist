@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import TodoItem from './TodoItem';
+import { useSelector, useDispatch } from 'react-redux';
 
 const TodoListWrapper = styled.div`
   display: flex;
@@ -30,24 +31,29 @@ const DoneList = styled.ul`
 `;
 
 const TodoList = () => {
+  const { todos } = useSelector(({ todos }) => ({
+    todos: todos.todosArr,
+  }));
+
+  const leftTodos = todos.filter((todo) => todo.isDone === false);
+  const doneTodos = todos.filter((todo) => todo.isDone === true);
+
   return (
     <TodoListWrapper>
       <LeftList>
         <h3>LEFT</h3>
         <ul>
-          <TodoItem />
-          <TodoItem />
-          <TodoItem />
-          <TodoItem />
-          <TodoItem />
-          <TodoItem />
-          {/* <TodoItem /> */}
+          {leftTodos.map((leftTodo) => (
+            <TodoItem key={leftTodo.id} todoItem={leftTodo} />
+          ))}
         </ul>
       </LeftList>
       <DoneList>
         <h3>DONE</h3>
         <ul>
-          <TodoItem done />
+          {doneTodos.map((doneTodo) => (
+            <TodoItem key={doneTodo.id} todoItem={doneTodo} />
+          ))}
         </ul>
       </DoneList>
     </TodoListWrapper>

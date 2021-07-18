@@ -52,12 +52,14 @@ const TodoItemWrapper = styled.li`
   }
 `;
 
-const TodoItem = ({ done }) => {
+const TodoItem = ({ todoItem }) => {
+  const { content, isDone } = todoItem;
+
   return (
     <TodoItemWrapper done>
       <div className="left-item">
-        <span className="checkbox">{done && <MdDone />}</span>
-        <span className="content">주유하기</span>
+        <span className="checkbox">{isDone && <MdDone />}</span>
+        <span className="content">{content}</span>
       </div>
       <button className="remove">
         <MdDelete />

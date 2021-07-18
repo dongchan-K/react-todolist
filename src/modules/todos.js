@@ -11,7 +11,13 @@ const todosInitialState = {
     {
       id: 2,
       content: 'TypeScript 공부하기',
-      isDone: false,
+      isDone: true,
+      date: '2021-07-18',
+    },
+    {
+      id: 3,
+      content: 'JavaScript 공부하기',
+      isDone: true,
       date: '2021-07-18',
     },
   ],
@@ -22,7 +28,13 @@ export const todosSlice = createSlice({
   initialState: todosInitialState,
   reducers: {
     addTodo: (state, { payload: todos }) => {
-      state.todosArr = [...state.todosArr, ...todos];
+      state.todosArr = [
+        ...state.todosArr,
+        {
+          ...todos,
+          id: state.todosArr.length + 1,
+        },
+      ];
     },
     checkTodo: (state, { payload: todo }) => {
       state.todosArr = state.todosArr.map((todoItem) =>
