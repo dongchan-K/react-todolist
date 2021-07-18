@@ -28,7 +28,7 @@ const InsertModalWrapper = styled.div`
   }
   input {
     width: 100%;
-    padding: 0.7rem 0;
+    padding: 1rem 0;
     margin-top: 3rem;
     font-size: 1.5rem;
     border-bottom: 3px dashed #e0ecff;
