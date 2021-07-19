@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { MdDone, MdDelete } from 'react-icons/md';
+import { checkTodo, removeTodo } from '../modules/todos';
+import { useDispatch } from 'react-redux';
 
 const TodoItemWrapper = styled.li`
   display: flex;
@@ -52,16 +54,27 @@ const TodoItemWrapper = styled.li`
   }
 `;
 
-const TodoItem = ({ todoItem }) => {
+const TodoItem = ({ key, todoItem }) => {
   const { content, isDone } = todoItem;
+  const dispatch = useDispatch();
+
+  const removeItem = () => {
+    dispatch(removeTodo(todoItem));
+  };
+
+  const checkItem = () => {
+    dispatch(checkTodo(todoItem));
+  };
 
   return (
     <TodoItemWrapper done>
       <div className="left-item">
-        <span className="checkbox">{isDone && <MdDone />}</span>
+        <span className="checkbox" onClick={checkItem}>
+          {isDone && <MdDone />}
+        </span>
         <span className="content">{content}</span>
       </div>
-      <button className="remove">
+      <button className="remove" onClick={removeItem}>
         <MdDelete />
       </button>
     </TodoItemWrapper>

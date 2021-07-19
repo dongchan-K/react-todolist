@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import styled, { css } from 'styled-components';
 import useInputs from '../hooks/useInputs';
-import { addTodo } from '../modules/todos';
+import { insertTodo } from '../modules/todos';
 import dayjs from 'dayjs';
 
 const TodoInsertWrapper = styled.div`
@@ -80,10 +80,10 @@ const TodoModal = ({ closeModal }) => {
   });
 
   // Todo 항목 추가
-  const insertTodo = () => {
+  const insertItem = () => {
     // 할 일이 입력되지 않았다면 추가하지 않음
     if (!form.content) return;
-    dispatch(addTodo(form));
+    dispatch(insertTodo(form));
     closeModal();
   };
 
@@ -99,7 +99,7 @@ const TodoModal = ({ closeModal }) => {
             onChange={(e) => changeForm(e)}
           />
           <ButtonWrapper>
-            <StyledButton type="submit" onClick={insertTodo}>
+            <StyledButton type="submit" onClick={insertItem}>
               추가
             </StyledButton>
             <StyledButton cancel onClick={closeModal}>
