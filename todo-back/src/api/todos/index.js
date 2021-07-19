@@ -5,6 +5,6 @@ const todos = Router();
 
 todos.get('/', todosCtrl.read);
 todos.post('/', todosCtrl.insert);
-todos.delete('/', todosCtrl.remove);
+todos.delete('/:id', todosCtrl.remove);
 
 export default todos;
