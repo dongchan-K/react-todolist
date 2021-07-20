@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { MdDone, MdDelete } from 'react-icons/md';
-import { checkTodoAction } from '../modules/todos';
+import { todoActionCreator } from '../modules/todos';
 import { useDispatch } from 'react-redux';
 import { removeTodoAPI } from '../lib/api/todos';
 
@@ -58,6 +58,7 @@ const TodoItemWrapper = styled.li`
 const TodoItem = ({ todoItem }) => {
   const { _id, content, isDone } = todoItem;
   const dispatch = useDispatch();
+  const { checkTodo } = todoActionCreator;
 
   const removeItem = () => {
     try {
@@ -68,7 +69,7 @@ const TodoItem = ({ todoItem }) => {
   };
 
   const checkItem = () => {
-    dispatch(checkTodoAction(todoItem));
+    dispatch(checkTodo(todoItem));
   };
 
   return (

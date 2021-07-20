@@ -29,54 +29,45 @@ export const todosSlice = createSlice({
   name: 'todos',
   initialState: todosInitialState,
   reducers: {
-    loadTodoAction: (state, { payload }) => {
+    loadTodo: (state, { payload }) => {
       state.todosLodaing = true;
       state.todosError = null;
     },
-    loadTodoActionSuccess: (state, { payload: todos }) => {
+    loadTodoSuccess: (state, { payload: todos }) => {
       state.todosLodaing = false;
       state.todosArr = todos;
     },
-    loadTodoActionFailure: (state, { payload: error }) => {
+    loadTodoFailure: (state, { payload: error }) => {
       state.todosLodaing = false;
       state.todosError = error;
     },
-    insertTodoAction: (state, { payload }) => {
+    insertTodo: (state, { payload }) => {
       state.todosLodaing = true;
       state.todosError = null;
     },
-    insertTodoActionSuccess: (state, { payload: todos }) => {
+    insertTodoSuccess: (state, { payload: todos }) => {
       state.todosLodaing = false;
       state.todosArr = todos;
     },
-    insertTodoActionFailure: (state, { payload: error }) => {
+    insertTodoFailure: (state, { payload: error }) => {
       state.todosLodaing = false;
       state.todosError = error;
     },
-    checkTodoAction: (state, { payload }) => {
+    checkTodo: (state, { payload }) => {
       state.todosLodaing = true;
       state.todosError = null;
     },
-    checkTodoActionSuccess: (state, { payload: todos }) => {
+    checkTodoSuccessr: (state, { payload: todos }) => {
       state.todosArr = todos;
     },
-    checkTodoActionFailure: (state, { payload: error }) => {
+    checkTodoFailure: (state, { payload: error }) => {
       state.todosLodaing = false;
       state.todosError = error;
     },
   },
 });
 
-export const {
-  loadTodoAction,
-  loadTodoActionSuccess,
-  loadTodoActionFailure,
-  insertTodoAction,
-  insertTodoActionSuccess,
-  insertTodoActionFailure,
-  checkTodoAction,
-  checkTodoActionSuccess,
-  checkTodoActionFailure,
-} = todosSlice.actions;
+// 액션 생성자를 todoActionCreator로 내보냄
+export const todoActionCreator = todosSlice.actions;
 
 export default todosSlice;

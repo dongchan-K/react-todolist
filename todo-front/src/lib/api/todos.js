@@ -1,7 +1,7 @@
 import client from './index';
 
 // 할 일 조회하기
-export const readTodoListAPI = () => {
+export const loadTodoListAPI = () => {
   client.get('/api/todos');
 };
 
