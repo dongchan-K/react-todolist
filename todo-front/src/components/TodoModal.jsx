@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled, { css } from 'styled-components';
 import useInputs from '../hooks/useInputs';
-import { insertTodo } from '../modules/todos';
+import { insertTodoAction } from '../modules/todos';
 import dayjs from 'dayjs';
 
 const TodoInsertWrapper = styled.div`
@@ -83,7 +83,7 @@ const TodoModal = ({ closeModal }) => {
   const insertItem = () => {
     // 할 일이 입력되지 않았다면 추가하지 않음
     if (!form.content) return;
-    dispatch(insertTodo(form));
+    dispatch(insertTodoAction(form));
     closeModal();
   };
 

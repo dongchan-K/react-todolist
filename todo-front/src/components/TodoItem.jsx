@@ -1,8 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { MdDone, MdDelete } from 'react-icons/md';
-import { checkTodo, removeTodo } from '../modules/todos';
+import { checkTodoAction } from '../modules/todos';
 import { useDispatch } from 'react-redux';
+import { deleteTodo } from '../lib/api/todos';
 
 const TodoItemWrapper = styled.li`
   display: flex;
@@ -54,16 +55,20 @@ const TodoItemWrapper = styled.li`
   }
 `;
 
-const TodoItem = ({ key, todoItem }) => {
-  const { content, isDone } = todoItem;
+const TodoItem = ({ todoItem }) => {
+  const { _id, content, isDone } = todoItem;
   const dispatch = useDispatch();
 
   const removeItem = () => {
-    dispatch(removeTodo(todoItem));
+    try {
+      deleteTodo(_id);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const checkItem = () => {
-    dispatch(checkTodo(todoItem));
+    dispatch(checkTodoAction(todoItem));
   };
 
   return (

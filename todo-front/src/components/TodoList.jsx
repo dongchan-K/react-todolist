@@ -44,7 +44,7 @@ const TodoList = () => {
         <h3>LEFT</h3>
         <ul>
           {leftTodos.map((leftTodo) => (
-            <TodoItem key={leftTodo.id} todoItem={leftTodo} />
+            <TodoItem key={leftTodo._id} todoItem={leftTodo} />
           ))}
         </ul>
       </LeftList>
@@ -52,7 +52,7 @@ const TodoList = () => {
         <h3>DONE</h3>
         <ul>
           {doneTodos.map((doneTodo) => (
-            <TodoItem key={doneTodo.id} todoItem={doneTodo} />
+            <TodoItem key={doneTodo._id} todoItem={doneTodo} />
           ))}
         </ul>
       </DoneList>
