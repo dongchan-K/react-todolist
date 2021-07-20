@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { MdDone, MdDelete } from 'react-icons/md';
 import { checkTodoAction } from '../modules/todos';
 import { useDispatch } from 'react-redux';
-import { deleteTodo } from '../lib/api/todos';
+import { removeTodoAPI } from '../lib/api/todos';
 
 const TodoItemWrapper = styled.li`
   display: flex;
@@ -61,7 +61,7 @@ const TodoItem = ({ todoItem }) => {
 
   const removeItem = () => {
     try {
-      deleteTodo(_id);
+      removeTodoAPI(_id);
     } catch (e) {
       console.log(e);
     }
