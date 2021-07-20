@@ -19,7 +19,6 @@ export const read = async (req, res) => {
 // POST /api/todos
 // {
 //   content: '할 일 내용'
-//   date: '날짜'
 // }
 export const insert = async (req, res) => {
   // 객체가 다음 필드를 가지고 있음을 검증
