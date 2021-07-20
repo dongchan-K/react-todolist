@@ -70,7 +70,7 @@ export const check = async (req, res) => {
     return;
   }
 
-  // 업데이트 할 데이터
+  // 업데이트 할 데이터 객체 복사
   const updateTodo = { ...req.body };
 
   try {
