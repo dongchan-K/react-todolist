@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import TodoItem from './TodoItem';
 import { useSelector, useDispatch } from 'react-redux';
+import { loadTodoListAPI } from '../lib/api/todos';
+import { todoActionCreator } from '../modules/todos';
 
 const TodoListWrapper = styled.div`
   display: flex;
@@ -34,9 +36,17 @@ const TodoList = () => {
   const { todos } = useSelector(({ todos }) => ({
     todos: todos.todosArr,
   }));
+  const dispatch = useDispatch();
+
+  const { loadTodo } = todoActionCreator;
 
   const leftTodos = todos.filter((todo) => todo.isDone === false);
   const doneTodos = todos.filter((todo) => todo.isDone === true);
+
+  // todoList 서버에 요청
+  useEffect(() => {
+    dispatch(loadTodo());
+  }, [dispatch, loadTodo]);
 
   return (
     <TodoListWrapper>

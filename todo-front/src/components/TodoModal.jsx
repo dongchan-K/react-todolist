@@ -80,11 +80,13 @@ const TodoModal = ({ closeModal }) => {
     date: dayjs().format('YYYY-MM-DD'),
   });
 
+  const { content } = form;
+
   // Todo 항목 추가
-  const insertItem = () => {
+  const insertItem = async () => {
     // 할 일이 입력되지 않았다면 추가하지 않음
-    if (!form.content) return;
-    dispatch(insertTodo(form));
+    if (!content) return;
+    await dispatch(insertTodo(content));
     closeModal();
   };
 

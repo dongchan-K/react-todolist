@@ -96,7 +96,7 @@ export const remove = async (req, res) => {
   try {
     // id를 기준으로 데이터를 찾고 삭제한다
     await Todo.findByIdAndRemove(id).exec();
-    res.status(204).send(); // No Content -> 응답할 데이터는 없음
+    res.json(id); // 삭제한 데이터의 id를 응답
   } catch (e) {
     res.status(500).send(e); // 서버 오류
   }

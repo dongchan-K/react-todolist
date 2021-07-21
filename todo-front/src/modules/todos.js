@@ -1,26 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const todosInitialState = {
-  todosArr: [
-    {
-      _id: 1,
-      content: 'React 공부하기',
-      isDone: false,
-      date: '2021-07-18',
-    },
-    {
-      _id: 2,
-      content: 'TypeScript 공부하기',
-      isDone: true,
-      date: '2021-07-18',
-    },
-    {
-      _id: 3,
-      content: 'JavaScript 공부하기',
-      isDone: true,
-      date: '2021-07-18',
-    },
-  ],
+  todosArr: [],
   todosLodaing: false,
   todosError: null,
 };
@@ -47,7 +28,7 @@ export const todosSlice = createSlice({
     },
     insertTodoSuccess: (state, { payload: todos }) => {
       state.todosLodaing = false;
-      state.todosArr = todos;
+      state.todosArr = [...state.todosArr, todos];
     },
     insertTodoFailure: (state, { payload: error }) => {
       state.todosLodaing = false;
@@ -57,10 +38,27 @@ export const todosSlice = createSlice({
       state.todosLodaing = true;
       state.todosError = null;
     },
-    checkTodoSuccessr: (state, { payload: todos }) => {
-      state.todosArr = todos;
+    checkTodoSuccess: (state, { payload: todos }) => {
+      state.todosLodaing = false;
+      state.todosArr = state.todosArr.map((todosItem) =>
+        todosItem._id === todos._id ? todos : todosItem,
+      );
     },
     checkTodoFailure: (state, { payload: error }) => {
+      state.todosLodaing = false;
+      state.todosError = error;
+    },
+    removeTodo: (state, { payload }) => {
+      state.todosLodaing = true;
+      state.todosError = null;
+    },
+    removeTodoSuccess: (state, { payload: _id }) => {
+      state.todosLodaing = false;
+      state.todosArr = state.todosArr.filter(
+        (todosItem) => todosItem._id !== _id,
+      );
+    },
+    removeTodoFailure: (state, { payload: error }) => {
       state.todosLodaing = false;
       state.todosError = error;
     },

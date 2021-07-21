@@ -58,18 +58,14 @@ const TodoItemWrapper = styled.li`
 const TodoItem = ({ todoItem }) => {
   const { _id, content, isDone } = todoItem;
   const dispatch = useDispatch();
-  const { checkTodo } = todoActionCreator;
+  const { checkTodo, removeTodo } = todoActionCreator;
 
   const removeItem = () => {
-    try {
-      removeTodoAPI(_id);
-    } catch (e) {
-      console.log(e);
-    }
+    dispatch(removeTodo(_id));
   };
 
   const checkItem = () => {
-    dispatch(checkTodo(todoItem));
+    dispatch(checkTodo({ _id, isDone: !isDone }));
   };
 
   return (

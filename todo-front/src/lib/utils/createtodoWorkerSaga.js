@@ -5,11 +5,9 @@ export default function todoWorkerSaga(type, request) {
   const FAILURE = `${type}Failure`;
 
   return function* (action) {
-    console.log(request);
     try {
       const res = yield call(request, action.payload);
       console.log(res);
-
       yield put({
         type: SUCCESS,
         payload: res.data,
