@@ -8,10 +8,10 @@ import api from './api';
 // dotenv를 불러옴
 require('dotenv').config();
 
-const { PORT, FRONT_SERVER_URL, MONGO_URI } = process.env;
+const { PORT, FRONT_SERVER_URL, MONGO_URL } = process.env;
 
 // connect 메서드를 사용해 서버와 DB 연결
-mongoose.connect(MONGO_URI, {
+mongoose.connect(MONGO_URL, {
   useNewUrlParser: true,
   useFindAndModify: false,
   useUnifiedTopology: true,
