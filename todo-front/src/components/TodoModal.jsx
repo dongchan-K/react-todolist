@@ -72,7 +72,6 @@ const StyledButton = styled.button`
 
 const TodoModal = ({ closeModal }) => {
   const dispatch = useDispatch();
-  const { insertTodo } = todoActionCreator;
   const { form, changeForm } = useInputs({
     id: null,
     content: null,
@@ -80,6 +79,7 @@ const TodoModal = ({ closeModal }) => {
     date: dayjs().format('YYYY-MM-DD'),
   });
 
+  const { insertTodo } = todoActionCreator;
   const { content } = form;
 
   // Todo 항목 추가

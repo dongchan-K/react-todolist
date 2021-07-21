@@ -56,8 +56,9 @@ const TodoItemWrapper = styled.li`
 `;
 
 const TodoItem = ({ todoItem }) => {
-  const { _id, content, isDone } = todoItem;
   const dispatch = useDispatch();
+
+  const { _id, content, isDone } = todoItem;
   const { checkTodo, removeTodo } = todoActionCreator;
 
   const removeItem = () => {
