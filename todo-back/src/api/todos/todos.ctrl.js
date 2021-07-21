@@ -1,5 +1,4 @@
 import Todo from '../../models/todo';
-import mongoose from 'mongoose';
 import Joi from 'joi';
 
 // 할 일 조회하기
@@ -9,7 +8,7 @@ export const read = async (req, res) => {
     // Todo 모델 인스턴스의 find 메서드를 사용하여 데이터 조회 및 sort 메서드를 사용하여 id 기준 내림차순 정렬 -> exec()를 붙여 주어야 쿼리문을 실행한다
     const todoList = await Todo.find().sort({ _id: -1 }).exec();
 
-    res.json(todoList); // json 형식으로 응답
+    res.status(200).json(todoList); // json 형식으로 응답
   } catch (e) {
     res.status(500).send(e); // 서버 오류
   }
