@@ -19,6 +19,7 @@
 - nodejs
 - express
 - dotenv
+- mongoose
 - mongoDB
 - mongoDB Atlas
 - AWS EC2
