@@ -59,5 +59,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 // express 서버를 실행할 때 필요한 포트 정의와 실행 시 callback 함수를 받는다.
 // get 메서드로 서버에 만든 port 변수를 가져옴
 app.listen(app.get('port'), () => {
-  console.log(`http://3.36.121.21:${app.get('port')}`);
+  console.log(`http://3.36.121.21`);
 });
