@@ -13,6 +13,7 @@
 - redux-saga
 - axios
 - styled-component
+- AWS EC2
 
 ### Back-end
 
