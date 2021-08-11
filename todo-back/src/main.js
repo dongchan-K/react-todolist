@@ -38,7 +38,7 @@ app.set('port', PORT || 3050);
 // cors = cors 에러가 발생하지 않게끔 요청 또는 도메인 접근을 허용하는 미들웨어 적용
 app.use(
   cors({
-    origin: [FRONT_SERVER_URL],
+    origin: [FRONT_SERVER_URL, 'http://localhost:3000/'],
   }),
 );
 
