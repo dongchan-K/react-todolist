@@ -25,6 +25,7 @@ const app = express();
 // morgan = 요청과 응답을 기록(logging)하는 미들웨어 적용
 // 개발시엔 dev, 실무에선 combined(더 자세함)
 if (NODE_MODE === 'production') {
+  console.log('production');
   app.use(morgan('combined'));
   app.use(hpp());
   app.use(helmet());
@@ -54,8 +55,13 @@ app.get('/', (req, res) => {
 
 // 라우터 적용
 app.use('/api', api);
+
 // path = 정적 파일을 제공하기 위한 미들웨어 적용
-app.use(express.static(path.join(__dirname, 'public')));
+if (NODE_MODE === 'production') {
+  app.use(express.static(path.join(__dirname, 'build')));
+} else {
+  app.use(express.static(path.join(__dirname, 'public')));
+}
 
 // express 서버를 실행할 때 필요한 포트 정의와 실행 시 callback 함수를 받는다.
 // get 메서드로 서버에 만든 port 변수를 가져옴
