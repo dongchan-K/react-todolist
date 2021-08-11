@@ -22,7 +22,7 @@ const app = express();
 
 // morgan = 요청과 응답을 기록(logging)하는 미들웨어 적용
 // 개발시엔 dev, 실무에선 combined(더 자세함)
-app.use(morgan('dev'));
+app.use(morgan('combined'));
 
 // set 메서드로 서버에 port라는 변수를 만듬, env에 PORT가 정의되지 않았다면 기본 port = 3050
 app.set('port', PORT || 3050);
