@@ -4,11 +4,13 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import path from 'path';
 import api from './api';
+import hpp from 'hpp';
+import helmet from 'helmet';
 
 // dotenv를 불러옴
 require('dotenv').config();
 
-const { PORT, FRONT_SERVER_URL, MONGO_URL } = process.env;
+const { PORT, FRONT_SERVER_URL, MONGO_URL, NODE_MODE } = process.env;
 
 // connect 메서드를 사용해 서버와 DB 연결
 mongoose.connect(MONGO_URL, {
@@ -22,7 +24,13 @@ const app = express();
 
 // morgan = 요청과 응답을 기록(logging)하는 미들웨어 적용
 // 개발시엔 dev, 실무에선 combined(더 자세함)
-app.use(morgan('combined'));
+if (NODE_MODE === 'production') {
+  app.use(morgan('combined'));
+  app.use(hpp());
+  app.use(helmet());
+} else {
+  app.use(morgan('dev'));
+}
 
 // set 메서드로 서버에 port라는 변수를 만듬, env에 PORT가 정의되지 않았다면 기본 port = 3050
 app.set('port', PORT || 3050);
@@ -30,7 +38,7 @@ app.set('port', PORT || 3050);
 // cors = cors 에러가 발생하지 않게끔 요청 또는 도메인 접근을 허용하는 미들웨어 적용
 app.use(
   cors({
-    origin: FRONT_SERVER_URL,
+    origin: [FRONT_SERVER_URL],
   }),
 );
 
