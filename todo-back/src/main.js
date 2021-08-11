@@ -39,6 +39,10 @@ app.use(express.json());
 // unrencoded = 요청 body의 application/x-www-form-urlencoded 구문분석을 위한 미들웨어
 app.use(express.urlencoded({ extended: true })); // true면 qs, false면 querystring 라이브러리 사용
 
+app.get('/', (req, res) => {
+  res.send('hello express');
+});
+
 // 라우터 적용
 app.use('/api', api);
 // path = 정적 파일을 제공하기 위한 미들웨어 적용
