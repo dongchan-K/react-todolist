@@ -1,5 +1,5 @@
 node_modules
 .env
 /build
-todo-list.pem
+todo-list-front.pem
 todo-list-back.pem
