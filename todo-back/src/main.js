@@ -25,7 +25,7 @@ const app = express();
 app.use(morgan('combined'));
 
 // set 메서드로 서버에 port라는 변수를 만듬, env에 PORT가 정의되지 않았다면 기본 port = 3050
-app.set('port', PORT || 3050);
+app.set('port', PORT || 80);
 
 // cors = cors 에러가 발생하지 않게끔 요청 또는 도메인 접근을 허용하는 미들웨어 적용
 app.use(
