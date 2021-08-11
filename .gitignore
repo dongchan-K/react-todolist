@@ -1,5 +1,4 @@
 node_modules
 .env
 build
-todo-list-front.pem
-todo-list-back.pem
+todo-list-aws.pem
