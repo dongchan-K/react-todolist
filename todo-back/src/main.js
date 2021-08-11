@@ -39,7 +39,6 @@ app.set('port', PORT || 3050);
 app.use(
   cors({
     origin: true,
-    credentials: true,
   }),
 );
 
